@@ -1,0 +1,1 @@
+.player{width:18rem;background-color:chocolate;display:flex;align-items:center;padding:0.5rem;border-radius:5rem 0 0 5rem}.player span{margin-left:0.5rem;font-size:1.5rem}.player img{width:5rem;height:5rem;border-radius:100%;object-fit:cover}.player-active{border:4px solid white;background-color:orangered !important;transform:scale(1.05) translateX(-0.5rem)}
