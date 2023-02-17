@@ -22,8 +22,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  pickCardAnimation = false;
-  currentCard: string = '';
+
   game!: Game;
   gameId!: string; //! current game id
 
@@ -49,6 +48,9 @@ export class GameComponent implements OnInit {
         this.game.deck = game.game.deck;
         this.game.playedCards = game.game.playedCards;
         this.game.players = game.game.players;
+        this.game.pickCardAnimation = game.game.pickCardAnimation;
+        this.game.currentCard = game.game.currentCard;
+
         console.log(game.game);
       });
     });
@@ -64,17 +66,17 @@ export class GameComponent implements OnInit {
   }
 
   pickCard() {
-    if (!this.pickCardAnimation) {
-      this.currentCard = this.game.deck.pop()!;
-      this.pickCardAnimation = true;
+    if (!this.game.pickCardAnimation) {
+      this.game.currentCard = this.game.deck.pop()!;
+      this.game.pickCardAnimation = true;
 
       this.game.currentPlayer++;
       this.game.currentPlayer =
         this.game.currentPlayer % this.game.players.length;
         this.updateGame();
       setTimeout(() => {
-        this.game.playedCards.push(this.currentCard);
-        this.pickCardAnimation = false;
+        this.game.playedCards.push(this.game.currentCard);
+        this.game.pickCardAnimation = false;
         this.updateGame();
       }, 1500);
     }
